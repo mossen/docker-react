@@ -3,9 +3,12 @@ version: '3.3'
 services:
   www: &web_node
     build: ./
+    command: sh /var/www/html/docker/entrypoint.sh
+    environment: 
+      - INITIALISE=${INITIALISE:-0}
     expose:
-    - 3000
+      - 4000
     ports:
-    - 3000:3000
+      - 4000:3000
     volumes:
-    - .:/var/www/html/
+      - .:/var/www/html/
